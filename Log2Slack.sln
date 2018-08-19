@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CDF16419-7AA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log2Slack.NLog", "src\Log2Slack.NLog\Log2Slack.NLog.csproj", "{2796BD68-EABE-4655-AFC8-6D457843DB54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log2Slack.Log4Net", "src\Log2Slack.Log4Net\Log2Slack.Log4Net.csproj", "{B76DA872-A619-48DF-8704-527047E41CB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{2796BD68-EABE-4655-AFC8-6D457843DB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2796BD68-EABE-4655-AFC8-6D457843DB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2796BD68-EABE-4655-AFC8-6D457843DB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76DA872-A619-48DF-8704-527047E41CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76DA872-A619-48DF-8704-527047E41CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76DA872-A619-48DF-8704-527047E41CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76DA872-A619-48DF-8704-527047E41CB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2796BD68-EABE-4655-AFC8-6D457843DB54} = {CDF16419-7AAE-4770-B3BC-EC547F310191}
+		{B76DA872-A619-48DF-8704-527047E41CB6} = {CDF16419-7AAE-4770-B3BC-EC547F310191}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B46F861-873B-49F2-9453-4DE528CE4871}
