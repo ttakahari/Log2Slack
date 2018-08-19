@@ -181,7 +181,11 @@ namespace Log2Slack.NLog.Tests
                 configuration.AddTarget("slack", target);
                 configuration.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
 
-                Assert.Throws<NLogConfigurationException>(() => new LogFactory(configuration));
+                var factory = new LogFactory(configuration);
+                var logger = factory.GetCurrentClassLogger();
+
+                // It dosen't send log.
+                logger.Info("nlog.invalidxml.test");
             }
 
             {
@@ -195,7 +199,11 @@ namespace Log2Slack.NLog.Tests
                 configuration.AddTarget("slack", target);
                 configuration.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
 
-                Assert.Throws<NLogConfigurationException>(() => new LogFactory(configuration));
+                var factory = new LogFactory(configuration);
+                var logger = factory.GetCurrentClassLogger();
+
+                // It dosen't send log.
+                logger.Info("nlog.invalidxml.test");
             }
 
             {
@@ -210,7 +218,11 @@ namespace Log2Slack.NLog.Tests
                 configuration.AddTarget("slack", target);
                 configuration.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
 
-                Assert.Throws<NLogConfigurationException>(() => new LogFactory(configuration));
+                var factory = new LogFactory(configuration);
+                var logger = factory.GetCurrentClassLogger();
+
+                // It dosen't send log.
+                logger.Info("nlog.invalidxml.test");
             }
         }
 
