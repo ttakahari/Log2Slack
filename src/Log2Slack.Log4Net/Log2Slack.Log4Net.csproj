@@ -1,9 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Description>Extension that sends logs to Slack for C# with log4net.</Description>
+        <Copyright>Copyright t.takahari 2018</Copyright>
+        <AssemblyTitle>Log2Slack.Log4Net</AssemblyTitle>
+        <VersionPrefix>0.1.0</VersionPrefix>
+        <Authors>t.takahari</Authors>
         <TargetFrameworks>netstandard2.0;netstandard1.6;net46</TargetFrameworks>
-        <LangVersion>latest</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <AssemblyName>Log2Slack.Log4Net</AssemblyName>
+        <PackageId>Log2Slack.Log4Net</PackageId>
+        <PackageTags>Log;Logging;Logger;Slack;Log4Net</PackageTags>
+        <PackageProjectUrl>https://github.com/ttakahari/Log2Slack</PackageProjectUrl>
+        <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/ttakahari/Log2Slack</RepositoryUrl>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
         <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
