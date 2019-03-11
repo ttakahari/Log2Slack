@@ -23,7 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="SlackSharp" Version="0.1.0" />
+        <PackageReference Include="SlackSharp" Version="0.2.0" />
         <PackageReference Include="NLog" Version="4.5.8" />
     </ItemGroup>
 

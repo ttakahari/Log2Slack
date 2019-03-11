@@ -1,6 +1,6 @@
-﻿using NLog;
+﻿using JsonHttpContentConverter.Jil;
+using NLog;
 using NLog.Config;
-using SlackSharp.Serialization.Jil;
 using System.IO;
 using System.Xml;
 using Xunit;
@@ -9,7 +9,7 @@ namespace Log2Slack.NLog.Tests
 {
     public class SlackTargetTests
     {
-        private const string WebHookUrl = @"";
+        private const string WebHookUrl = @"https://hooks.slack.com/services/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";
 
         [Fact]
         public void InvalidXmlConfig_Tests()
@@ -30,7 +30,7 @@ namespace Log2Slack.NLog.Tests
     <targets>
         <target name=""slack""
             xsi:type=""Slack""
-            serializerType=""SlackSharp.Serialization.Jil.JilSerializer, SlackSharp.Serialization.Jil""
+            serializerType=""JsonHttpContentConverter.Jil.JilHttpContentConverter, JsonHttpContentConverter.Jil""
             layout=""${longdate}|${level}|${message}"" />
     </targets>
 
@@ -141,7 +141,7 @@ namespace Log2Slack.NLog.Tests
         <target name=""slack""
             xsi:type=""Slack""
             webHookUrl=""{WebHookUrl}""
-            serializerType=""SlackSharp.Serialization.Jil.JilSerializer, SlackSharp.Serialization.Jil""
+            serializerType=""JsonHttpContentConverter.Jil.JilHttpContentConverter, JsonHttpContentConverter.Jil""
             layout=""${{longdate}}|${{level}}|${{message}}"" />
     </targets>
 
@@ -174,7 +174,7 @@ namespace Log2Slack.NLog.Tests
                 var configuration = new LoggingConfiguration();
                 var target = new SlackTarget
                 {
-                    SerializerType = typeof(JilSerializer),
+                    SerializerType = typeof(JilHttpContentConverter),
                     Layout = "${longdate}|${level}|${message}"
                 };
 
@@ -233,7 +233,7 @@ namespace Log2Slack.NLog.Tests
             var target = new SlackTarget
             {
                 WebHookUrl = WebHookUrl,
-                SerializerType = typeof(JilSerializer),
+                SerializerType = typeof(JilHttpContentConverter),
                 Layout = "${longdate}|${level}|${message}"
             };
 

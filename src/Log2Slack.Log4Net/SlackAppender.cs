@@ -1,4 +1,5 @@
-﻿using log4net.Appender;
+﻿using JsonHttpContentConverter;
+using log4net.Appender;
 using log4net.Core;
 using SlackSharp;
 using SlackSharp.Models;
@@ -30,11 +31,11 @@ namespace Log2Slack.Log4Net
             if (string.IsNullOrEmpty(WebHookUrl)) throw new LogException($"{nameof(WebHookUrl)} must not be empty or null.");
             if (SerializerType == null) throw new LogException($"{nameof(SerializerType)} must not be empty or null.");
 
-            var serializer = Activator.CreateInstance(SerializerType) as IHttpContentJsonSerializer;
+            var serializer = Activator.CreateInstance(SerializerType) as IJsonHttpContentConverter;
 
             if (serializer == null)
             {
-                throw new LogException($"{nameof(SerializerType)} must implements {typeof(IHttpContentJsonSerializer).FullName}.");
+                throw new LogException($"{nameof(SerializerType)} must implements {typeof(IJsonHttpContentConverter).FullName}.");
             }
 
             _client = new WebHookClient(serializer);
@@ -45,7 +46,7 @@ namespace Log2Slack.Log4Net
             var message = RenderLoggingEvent(loggingEvent);
 
             _client
-                .SendAsync(WebHookUrl, new Payload { Channel = Channel, Username = Username, IconEmoji = IconEmoji, IconUrl = IconUrl, Text = message })
+                .SendAsync(WebHookUrl, new Payload { Username = Username, IconEmoji = IconEmoji, IconUrl = IconUrl, Text = message })
                 .ContinueWith(t => ErrorHandler.Error(t.Exception.ToString()), TaskContinuationOptions.OnlyOnFaulted);
         }
     }

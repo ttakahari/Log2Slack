@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using JsonHttpContentConverter;
+using NLog;
 using NLog.Common;
 using NLog.Targets;
 using SlackSharp;
@@ -40,11 +41,11 @@ namespace Log2Slack.NLog
             if (string.IsNullOrEmpty(WebHookUrl)) throw new NLogConfigurationException($"{nameof(WebHookUrl)} must not be empty or null.");
             if (SerializerType == null) throw new NLogConfigurationException($"{nameof(SerializerType)} must not be empty or null.");
 
-            var serializer = Activator.CreateInstance(SerializerType) as IHttpContentJsonSerializer;
+            var serializer = Activator.CreateInstance(SerializerType) as IJsonHttpContentConverter;
 
             if (serializer == null)
             {
-                throw new NLogConfigurationException($"{nameof(SerializerType)} must implements {typeof(IHttpContentJsonSerializer).FullName}.");
+                throw new NLogConfigurationException($"{nameof(SerializerType)} must implements {typeof(IJsonHttpContentConverter).FullName}.");
             }
 
             _client = new WebHookClient(serializer);
@@ -55,7 +56,7 @@ namespace Log2Slack.NLog
             var log = Layout.Render(logEvent);
 
             _client
-                .SendAsync(WebHookUrl, new Payload { Channel = Channel, Username = Username, IconEmoji = IconEmoji, IconUrl = IconUrl, Text = log })
+                .SendAsync(WebHookUrl, new Payload { Username = Username, IconEmoji = IconEmoji, IconUrl = IconUrl, Text = log })
                 .ContinueWith(t => InternalLogger.Error(t.Exception.ToString()), TaskContinuationOptions.OnlyOnFaulted);
         }
     }

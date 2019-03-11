@@ -1,9 +1,9 @@
-﻿using log4net;
+﻿using JsonHttpContentConverter.Jil;
+using log4net;
 using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
 using log4net.Repository.Hierarchy;
-using SlackSharp.Serialization.Jil;
 using System.Reflection;
 using System.Xml;
 using Xunit;
@@ -12,7 +12,7 @@ namespace Log2Slack.Log4Net.Tests
 {
     public class SlackAppenderTests
     {
-        private const string WebHookUrl = @"";
+        private const string WebHookUrl = @"https://hooks.slack.com/services/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";
 
         [Fact]
         public void InvalidXmlConfig_Tests()
@@ -29,7 +29,7 @@ namespace Log2Slack.Log4Net.Tests
                 xml.LoadXml($@"
 <log4net>
     <appender name=""SlackAppender"" type=""Log2Slack.Log4Net.SlackAppender, Log2Slack.Log4Net"">
-        <param name=""SerializerType"" value=""SlackSharp.Serialization.Jil.JilSerializer, SlackSharp.Serialization.Jil"" />
+        <param name=""SerializerType"" value=""JsonHttpContentConverter.Jil.JilHttpContentConverter, JsonHttpContentConverter.Jil"" />
         <layout type=""log4net.Layout.PatternLayout"">
             <ConversionPattern value=""%date|%-5level|%message"" />
         </layout>
@@ -123,7 +123,7 @@ namespace Log2Slack.Log4Net.Tests
 <log4net>
     <appender name=""SlackAppender"" type=""Log2Slack.Log4Net.SlackAppender, Log2Slack.Log4Net"">
         <param name=""WebHookUrl"" value=""{WebHookUrl}"" />
-        <param name=""SerializerType"" value=""SlackSharp.Serialization.Jil.JilSerializer, SlackSharp.Serialization.Jil"" />
+        <param name=""SerializerType"" value=""JsonHttpContentConverter.Jil.JilHttpContentConverter, JsonHttpContentConverter.Jil"" />
         <layout type=""log4net.Layout.PatternLayout"">
             <ConversionPattern value=""%date|%-5level|%message"" />
         </layout>
@@ -161,7 +161,7 @@ namespace Log2Slack.Log4Net.Tests
             {
                 var appender = new SlackAppender
                 {
-                    SerializerType = typeof(JilSerializer),
+                    SerializerType = typeof(JilHttpContentConverter),
                     Layout = layout
                 };
 
@@ -211,7 +211,7 @@ namespace Log2Slack.Log4Net.Tests
             var appender = new SlackAppender
             {
                 WebHookUrl = WebHookUrl,
-                SerializerType = typeof(JilSerializer),
+                SerializerType = typeof(JilHttpContentConverter),
                 Layout = layout
             };
 
